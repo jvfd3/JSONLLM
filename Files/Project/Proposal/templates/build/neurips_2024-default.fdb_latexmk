@@ -1,0 +1,17 @@
+# Fdb version 4
+["pdflatex"] 1759457153.39765 "b:/GitHub/UFMG/Disciplinas/DCC831-TECC_Grandes_Modelos_de_Linguagem/Files/Atividades/Project/LLM_ProjectProposal/templates/neurips_2024-default.tex" "build/neurips_2024-default.pdf" "neurips_2024-default" 1759457154.18828 2
+  "b:/GitHub/UFMG/Disciplinas/DCC831-TECC_Grandes_Modelos_de_Linguagem/Files/Atividades/Project/LLM_ProjectProposal/templates/neurips_2024-default.tex" 1759424855 42152 d502fbf11540cbc4e09310f2f51cd79b ""
+  "b:/Programas/Programming/LaTeX/texlive/2024/texmf-dist/tex/latex/base/article.cls" 1720369726 20144 67a5f8e0f9e445e8ec6834e595cebdc9 ""
+  "b:/Programas/Programming/LaTeX/texlive/2024/texmf-dist/tex/latex/base/size10.clo" 1720369726 8448 358bf3de18513f057a13bdc6e6770c41 ""
+  "b:/Programas/Programming/LaTeX/texlive/2024/texmf-dist/web2c/texmf.cnf" 1720367558 42007 0b741a3c21a5ca32b40e3846e75b3548 ""
+  "b:/Programas/Programming/LaTeX/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1720372525 8239228 0eefe338bc564893a5156c8d0609a2d2 ""
+  "b:/Programas/Programming/LaTeX/texlive/2024/texmf.cnf" 1720372253 713 e69b156964470283e0530f5060668171 ""
+  "build/neurips_2024-default.aux" 1759457153 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "build/neurips_2024.sty" 0 -1 0 ""
+  "neurips_2024-default.tex" 1759424855 42152 d502fbf11540cbc4e09310f2f51cd79b ""
+  "neurips_2024.sty" 0 -1 0 ""
+  (generated)
+  "build/neurips_2024-default.aux"
+  "build/neurips_2024-default.log"
+  "build/neurips_2024-default.pdf"
+  (rewritten before read)

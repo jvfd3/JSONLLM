@@ -1,0 +1,29 @@
+\begin{thebibliography}{}
+
+\bibitem[Brinkmann and Bizer, 2025]{SelfRefinementLLM2024}
+Brinkmann, A. and Bizer, C. (2025).
+\newblock Self-refinement strategies for llm-based product attribute value extraction.
+\newblock {\em arXiv preprint arXiv:2501.01237}.
+\newblock Accessed October 2025.
+
+\bibitem[Brinkmann et~al., 2024]{ExtractGPT2023}
+Brinkmann, A., Shraga, R., and Bizer, C. (2024).
+\newblock Extractgpt: Exploring the potential of large language models for product attribute value extraction.
+\newblock In Delir~Haghighi, P., Greguš, M., Kotsis, G., and Khalil, I., editors, {\em Information Integration and Web Intelligence}, volume 15342, pages 38--52. Springer Nature Switzerland, Cham.
+
+\bibitem[Campos et~al., 2023]{TRECProductSearch_2023}
+Campos, D., Kallumadi, S., Rosset, C., Zhai, C.~X., and Magnani, A. (2023).
+\newblock Overview of the trec 2023 product product search track.
+
+\bibitem[Sinha and Gujral, 2024]{PAE2024}
+Sinha, A. and Gujral, E. (2024).
+\newblock Pae: Llm-based product attribute extraction for e-commerce fashion trends.
+\newblock {\em arXiv preprint arXiv:2405.17533}.
+\newblock Accessed October 2025.
+
+\bibitem[Yang et~al., 2022]{MAVE2024}
+Yang, Y., Kharitonov, E., Ghosh, S., et~al. (2022).
+\newblock Mave: A large-scale dataset for product attribute value extraction.
+\newblock Accessed October 2025.
+
+\end{thebibliography}

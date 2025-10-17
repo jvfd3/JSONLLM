@@ -1,0 +1,11 @@
+PWD b:/GitHub/UFMG/Disciplinas/DCC831-TECC_Grandes_Modelos_de_Linguagem/Files/Atividades/Project/LLM_ProjectProposal/templates
+INPUT b:/Programas/Programming/LaTeX/texlive/2024/texmf.cnf
+INPUT b:/Programas/Programming/LaTeX/texlive/2024/texmf-dist/web2c/texmf.cnf
+INPUT b:/Programas/Programming/LaTeX/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT b:/GitHub/UFMG/Disciplinas/DCC831-TECC_Grandes_Modelos_de_Linguagem/Files/Atividades/Project/LLM_ProjectProposal/templates/neurips_2024-default.tex
+OUTPUT build/neurips_2024-default.log
+INPUT b:/Programas/Programming/LaTeX/texlive/2024/texmf-dist/tex/latex/base/article.cls
+INPUT b:/Programas/Programming/LaTeX/texlive/2024/texmf-dist/tex/latex/base/article.cls
+INPUT b:/Programas/Programming/LaTeX/texlive/2024/texmf-dist/tex/latex/base/size10.clo
+INPUT b:/Programas/Programming/LaTeX/texlive/2024/texmf-dist/tex/latex/base/size10.clo
+INPUT b:/Programas/Programming/LaTeX/texlive/2024/texmf-dist/tex/latex/base/size10.clo
