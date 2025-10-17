@@ -1,0 +1,24 @@
+# Feedback 16/10/2025
+
+- Faltam muitos "comos?"
+  - Como garantir essa escalabilidade pra sistemas de e-commerce?
+- Como medir a apresentação dos produtos?
+- O ministério público tem um projeto próximo de extração de atributos?
+- Eles estão buscando um framework no projeto do Ministério Público?
+- Lang Extract: framework do Google.
+- Talvez isso tenha algum tipo de avaliação se o output tá de acordo com a expectativa.
+- Ao invés de começar dos primórdios, começar do já existente e melhorar o que der.
+- Talvez o que propomos já tenha respostas.
+- O Lang Extract é uma solução comercial, talvez existam outros.
+- Já temos noção de quais são as baselines?
+- Talvez seja otimista demais isso de garantir escalabilidade.
+- Ele sugere remover do escopo isso de escalabilidade com e-commerce.
+- Provavelmente conseguimos até com alguma biblioteca esse comparativo.
+- Perguntas de pesquisa
+  - Treinamento é necessário ou dá pra atacar estratégias de prompts diferentes?
+  - Talvez fine-tuning seria outra variante experimental, mas é legal enumerar. Quem com quem? Comparar com quais coisas da literatura?
+- Talvez um upperbound do estado da arte, tem um modelo que é da liquid.ai lfm2-extract. Que recebeu ajuste fino para extração de atributos.
+- Autoaperfeiçoamento não tá muito claro. O que couber na variante de tempo vale.
+- O problema é esse: extração de atributoos. Que ferramentas existem? Quais são as formas clássicas? Como usar o LLM em um framework que já resolve várias operações? Para focarmos em coisas pra análise. É melhor um modelo pré-treinado? Pré-treinado pra extração? Tamanho do modelo importa? Famílias de LLM importam? Como instruir o modelo? Que prompts usar? Quais variáveis experimentais podem ser úteis e impactar a tarefa final?
+- Já temos datasets usados e métricas de avaliação usuais. Agora é testar formas.
+- Como projeto tá bem encaminhado. Cortar distrações. Se há algo que facilite a operacionalização, focar no cerne da investigação de como as LLMs impactam.
