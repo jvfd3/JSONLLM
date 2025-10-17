@@ -1,0 +1,44 @@
+# Coisas a fazermos
+
+- Focar na operacionalização e nos impactos das LLMs.
+- Dúvida
+  - P: Extrair atributo de Imagem?
+  - P: Extrair atributos de produtos similares?
+  - P: Categorizar?
+  - P: Recategorizar?
+  - P: Testar em categorias diferentes?
+  - P: Quais as limitações dos datasets e das baselines?
+  - P: O que é esse autoaperfeiçoamento?
+- Baselines
+  - [ ] Descobrir quais
+  - [ ] Quais são as baselines clássicas?
+  - [ ] Implementar
+  - [ ] Começar pelo melhor que já existe
+- Testar: O que com quem?
+  - Promps
+    - Que prompts usar?
+    - De que forma isso altera a qualidade do output?
+    - [ ] Zero-Shot
+    - [ ] Few-Shot
+  - [ ] Fine-Tuning
+  - [ ] Modelos pré-treinados
+  - Famílias de LLM importam?
+  - Quais variáveis experimentais podemos aplicar?
+  - [ ] Modelos pré-treinados para extração
+    - [ ] liquid.ai lfm2-extract (Upperbound)
+    - [ ] Lang Extract: framework do Google (Comercial)
+    - Tamanho do modelo importa?
+- Datasets
+  - [ ] MAVE (treino)
+  - [ ] TREC (teste)
+  - [ ] Outros?
+- Avaliação
+  - [ ] Precisão
+  - [ ] Recall
+  - [ ] F1-Score
+  - [ ] Procurar quais outras métricas são usadas na literatura e já estão implementadas.
+  - [ ] Procurar bibliotecas.
+- Escopo
+- Fora do escopo
+  - Escalabilidade para e-commerce
+  - Apresentação dos produtos
