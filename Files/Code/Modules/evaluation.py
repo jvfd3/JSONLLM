@@ -1,4 +1,4 @@
-"""  """
+""" Module for evaluating model solutions and plotting results. """
 
 def evaluate_solution() -> None:
     """ Evaluates the model """
