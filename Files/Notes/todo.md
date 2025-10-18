@@ -58,7 +58,16 @@
 - P: O que é esse autoaperfeiçoamento?
   - **R:** Pesquisar posteriormente.
 
-## Tarefas
+## Tasks
+
+### Pending/optional
+
+- [ ] Definir o que mudar para melhorar o modelo.
+- [ ] Testar os vários [modelos do Hugging Face](https://huggingface.co/av-generation/models)
+- [ ] (OPT) Atributos de produtos similares
+- [ ] (OPT) Atributos de produtos de categorias próximas
+- [ ] (OPT) Recategorizar produtos
+- [ ] (OPT) Atributos de imagens
 
 ### 💠
 
