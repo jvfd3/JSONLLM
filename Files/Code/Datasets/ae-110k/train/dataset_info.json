@@ -1,0 +1,119 @@
+{
+  "builder_name": "parquet",
+  "citation": "",
+  "config_name": "default",
+  "dataset_name": "ae-110k-dataset",
+  "dataset_size": 18931427,
+  "description": "",
+  "download_checksums": {
+    "hf://datasets/av-generation/ae-110k-dataset@afbaa935fa746125d3460286daf9cad94c3317bc/data/train-00000-of-00001.parquet": {
+      "num_bytes": 5058784,
+      "checksum": null
+    },
+    "hf://datasets/av-generation/ae-110k-dataset@afbaa935fa746125d3460286daf9cad94c3317bc/data/validation-00000-of-00001.parquet": {
+      "num_bytes": 632173,
+      "checksum": null
+    },
+    "hf://datasets/av-generation/ae-110k-dataset@afbaa935fa746125d3460286daf9cad94c3317bc/data/test-00000-of-00001.parquet": {
+      "num_bytes": 870115,
+      "checksum": null
+    }
+  },
+  "download_size": 6561072,
+  "features": {
+    "id": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "text": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "attributes": {
+      "feature": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "_type": "List"
+    },
+    "values": {
+      "feature": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "_type": "List"
+    },
+    "values_indices": {
+      "feature": {
+        "feature": {
+          "dtype": "int64",
+          "_type": "Value"
+        },
+        "_type": "List"
+      },
+      "_type": "List"
+    },
+    "values_text": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "attributes_values": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "json_answer": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "candidate_attributes": {
+      "feature": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "_type": "List"
+    },
+    "candidate_text": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "candidate_example": {
+      "json_answer": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "text": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 25492499,
+  "splits": {
+    "train": {
+      "name": "train",
+      "num_bytes": 13924153,
+      "num_examples": 31604,
+      "dataset_name": "ae-110k-dataset"
+    },
+    "validation": {
+      "name": "validation",
+      "num_bytes": 1734491,
+      "num_examples": 3950,
+      "dataset_name": "ae-110k-dataset"
+    },
+    "test": {
+      "name": "test",
+      "num_bytes": 3272783,
+      "num_examples": 3951,
+      "dataset_name": "ae-110k-dataset"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}
