@@ -1,9 +1,10 @@
 """ Loading DB """
 
 import pandas as pd
-from datasets import load_dataset
+import datasets as ds
+# from ds import load_dataset
 
-def get_datasets(selected_df: str) -> pd.DataFrame:
+def get_datasets(selected_df: str) -> ds.dataset_dict.DatasetDict:
     """ selected_df options: 'ae-110k', 'oa-mine', 'mave' """
 
     def get_file_name(segment: str) -> str:
@@ -24,10 +25,10 @@ def get_datasets(selected_df: str) -> pd.DataFrame:
         loaded_df = pd.read_parquet(url)
         return loaded_df
 
-    def load_dataset_from_hf(dataset: str) -> pd.DataFrame:
+    def load_dataset_from_hf(dataset: str) -> ds.dataset_dict.DatasetDict:
         """ Loads the dataset from Hugging Face """
-        ds = load_dataset(f'av-generation/{dataset}-dataset')
-        return ds
+        dataset = ds.load_dataset(f'av-generation/{dataset}-dataset')
+        return dataset
 
     dfs = {
         'train': pd.DataFrame(),
@@ -43,4 +44,4 @@ def get_datasets(selected_df: str) -> pd.DataFrame:
 
     return dfs
 
-# load_database()
+# ae110k = get_datasets('ae-110k')
