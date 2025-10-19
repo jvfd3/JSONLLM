@@ -113,6 +113,11 @@ def get_dataframes(selected_df: str) -> Dict[str, pd.DataFrame]:
         else:
             dfs = load_dataframes_from_hf(selected_df)
             save_dataframe_to_path(dfs, df_saving_path)
+
+    if HYPER['verbose']:
+        print(f'Loaded dataframes with splits: {list(dfs.keys())}')
+        shapes = {split: df.shape for split, df in dfs.items()}
+        print(f'The shapes of the dataframes are: {shapes}')
     
     return dfs
 
