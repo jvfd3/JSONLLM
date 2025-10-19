@@ -11,7 +11,8 @@ import datasets as ds
 from typing import Dict
 # from ds import load_dataset
 
-from hyperparameters import get_hyperparameters
+# from hyperparameters import get_hyperparameters # When local running
+from .hyperparameters import get_hyperparameters # For module running
 
 SPLITS = ['train', 'test', 'validation']
 HYPER = get_hyperparameters()['load_db']
@@ -115,9 +116,9 @@ def get_dataframes(selected_df: str) -> Dict[str, pd.DataFrame]:
     
     return dfs
 
-datasets_dict = {
-    'ae-110k': get_dataframes('ae-110k'),
-    'oa-mine': get_dataframes('oa-mine'),
-    'mave': get_dataframes('mave'),
-}
+# datasets_dict = {
+#     'ae-110k': get_dataframes('ae-110k'),
+#     'oa-mine': get_dataframes('oa-mine'),
+#     'mave': get_dataframes('mave'),
+# }
 
