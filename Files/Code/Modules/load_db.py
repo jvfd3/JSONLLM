@@ -1,11 +1,21 @@
-""" Loading DB """
+""" Loading DB
+# To-Do's
+
+- [X] Save dataframes locally after first load
+- [X] Add option to load dataframes from local path
+"""
 
 import os
 import pandas as pd
 import datasets as ds
+from typing import Dict
 # from ds import load_dataset
 
-def get_dataset(selected_df: str) -> ds.dataset_dict.DatasetDict:
+from hyperparameters import get_hyperparameters
+
+SPLITS = ['train', 'test', 'validation']
+
+def get_dataframes(selected_df: str) -> Dict[str, pd.DataFrame]:
     """ selected_df options: 'ae-110k', 'oa-mine', 'mave' """
 
     def load_parquet(dataset: str, segment: str) -> pd.DataFrame:
@@ -27,15 +37,26 @@ def get_dataset(selected_df: str) -> ds.dataset_dict.DatasetDict:
         loaded_df = pd.read_parquet(url)
         return loaded_df
 
-    def load_from_path(saved_df_path: str) -> ds.dataset_dict.DatasetDict:
+    def load_datasets_from_path(saved_df_path: str) -> ds.dataset_dict.DatasetDict:
         """ Loads the dataset from local path """
         dfs = ds.load_from_disk(saved_df_path)
         return dfs
 
-    def load_dataset_from_hf(dataset: str) -> ds.dataset_dict.DatasetDict:
+    def load_dataframes_from_path(saved_df_path: str) -> Dict[str, pd.DataFrame]:
+        """ Loads the dataframes from local path """
+        dataframes = {split: pd.DataFrame() for split in SPLITS}
+
+        for split in SPLITS:
+            file_path = os.path.join(saved_df_path, f"{split}.parquet")
+            if os.path.exists(file_path):
+                dataframes[split] = pd.read_parquet(file_path)
+        return dataframes
+
+    def load_dataframes_from_hf(selected_df: str) -> Dict[str, pd.DataFrame]:
         """ Loads the dataset from Hugging Face """
-        dataset = ds.load_dataset(f'av-generation/{dataset}-dataset')
-        return dataset
+        datasets = ds.load_dataset(f'av-generation/{selected_df}-dataset')
+        pandas_dfs = convert_to_pandas(datasets)
+        return pandas_dfs
 
     def get_path_to_save(selected_df: str = '') -> str:
         """ Returns the path of the running code file """
@@ -46,32 +67,46 @@ def get_dataset(selected_df: str) -> ds.dataset_dict.DatasetDict:
         normalized_path = os.path.join(normalized_path, selected_df)
         return normalized_path
 
-    def save_to_path(dfs: ds.dataset_dict.DatasetDict, saving_path: str) -> None:
+    def save_dataset_to_path(datasets: ds.dataset_dict.DatasetDict, saving_path: str) -> None:
         """ Saves the dataset to local path """
-        # print(f'Saving dataset to "{normalized_path}"...')
-        dfs.save_to_disk(saving_path, max_shard_size='100MB')
+        datasets.save_to_disk(saving_path, max_shard_size='100MB')
+    
+    def save_dataframe_to_path(dfs: Dict[str, pd.DataFrame], saving_path: str) -> None:
+        """ Saves the dataframe to local path """
+        os.makedirs(saving_path, exist_ok=True)
+        for split, df in dfs.items():
+            if df is None or df.empty:
+                continue
+            out = os.path.join(saving_path, f"{split}.parquet")
+            df.reset_index(drop=True).to_parquet(out, index=False)
 
-    dfs = {
-        'train': pd.DataFrame(),
-        'test': pd.DataFrame(),
-        'validation': pd.DataFrame(),
-    }
+    def convert_to_pandas(dfs: ds.dataset_dict.DatasetDict) -> Dict[str, pd.DataFrame]:
+        """ Converts the dataset splits to pandas DataFrames """
+        pandas_dfs = {}
 
-    dataset_options = ['ae-110k', 'oa-mine', 'mave'] # Check if mave works
+        for split in SPLITS:
+            if split in dfs.keys():
+                pandas_dfs[split] = dfs[split].to_pandas()
+
+        return pandas_dfs
+
+    dfs = {split: pd.DataFrame() for split in SPLITS}
+
+    dataset_options = ['ae-110k', 'oa-mine', 'mave']
+    
     df_saving_path = get_path_to_save(selected_df)
     if selected_df in dataset_options:
         if os.path.exists(df_saving_path):
-            dfs = load_from_path(df_saving_path)
+            dfs = load_dataframes_from_path(df_saving_path)
         else:
-            dfs = load_dataset_from_hf(selected_df)
-            save_to_path(dfs, df_saving_path)
-        # dfs['train'] = load_parquet(selected_df, 'train')
-        # dfs['test'] = load_parquet(selected_df, 'test')
-
+            dfs = load_dataframes_from_hf(selected_df)
+            save_dataframe_to_path(dfs, df_saving_path)
+    
     return dfs
 
-# datasets_dict = {
-#     'ae-110k': get_dataset('ae-110k'),
-#     'oa-mine': get_dataset('oa-mine'),
-#     'mave': get_dataset('mave'),
-# }
+datasets_dict = {
+    'ae-110k': get_dataframes('ae-110k'),
+    'oa-mine': get_dataframes('oa-mine'),
+    'mave': get_dataframes('mave'),
+}
+
