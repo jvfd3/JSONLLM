@@ -55,7 +55,7 @@ def get_dataframes(selected_df: str) -> Dict[str, pd.DataFrame]:
         for split in SPLITS:
             file_path = os.path.join(saved_df_path, f"{split}.parquet")
             if os.path.exists(file_path):
-                dataframes[split] = pd.read_parquet(file_path)
+                dataframes[split] = pd.read_parquet(file_path).sort_values(by='id').reset_index(drop=True)
         return dataframes
 
     def load_dataframes_from_hf(selected_df: str) -> Dict[str, pd.DataFrame]:
