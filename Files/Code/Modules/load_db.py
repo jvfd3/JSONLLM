@@ -14,6 +14,7 @@ from typing import Dict
 from hyperparameters import get_hyperparameters
 
 SPLITS = ['train', 'test', 'validation']
+HYPER = get_hyperparameters()['load_db']
 
 def get_dataframes(selected_df: str) -> Dict[str, pd.DataFrame]:
     """ selected_df options: 'ae-110k', 'oa-mine', 'mave' """
@@ -39,11 +40,15 @@ def get_dataframes(selected_df: str) -> Dict[str, pd.DataFrame]:
 
     def load_datasets_from_path(saved_df_path: str) -> ds.dataset_dict.DatasetDict:
         """ Loads the dataset from local path """
+        if HYPER['verbose']:
+            print(f"Loading dataset from local path: {df_saving_path}")
         dfs = ds.load_from_disk(saved_df_path)
         return dfs
 
     def load_dataframes_from_path(saved_df_path: str) -> Dict[str, pd.DataFrame]:
         """ Loads the dataframes from local path """
+        if HYPER['verbose']:
+            print(f"Loading dataframes from local path: {df_saving_path}")
         dataframes = {split: pd.DataFrame() for split in SPLITS}
 
         for split in SPLITS:
@@ -54,6 +59,8 @@ def get_dataframes(selected_df: str) -> Dict[str, pd.DataFrame]:
 
     def load_dataframes_from_hf(selected_df: str) -> Dict[str, pd.DataFrame]:
         """ Loads the dataset from Hugging Face """
+        if HYPER['verbose']:
+            print(f"Loading dataframes from Hugging Face for dataset: {selected_df}")
         datasets = ds.load_dataset(f'av-generation/{selected_df}-dataset')
         pandas_dfs = convert_to_pandas(datasets)
         return pandas_dfs
@@ -73,6 +80,8 @@ def get_dataframes(selected_df: str) -> Dict[str, pd.DataFrame]:
     
     def save_dataframe_to_path(dfs: Dict[str, pd.DataFrame], saving_path: str) -> None:
         """ Saves the dataframe to local path """
+        if HYPER['verbose']:
+            print(f"Saving dataframes to local path: {saving_path}")
         os.makedirs(saving_path, exist_ok=True)
         for split, df in dfs.items():
             if df is None or df.empty:
@@ -96,6 +105,8 @@ def get_dataframes(selected_df: str) -> Dict[str, pd.DataFrame]:
     
     df_saving_path = get_path_to_save(selected_df)
     if selected_df in dataset_options:
+        if HYPER['verbose']:
+            print(f"Loading dataframe: {selected_df}")
         if os.path.exists(df_saving_path):
             dfs = load_dataframes_from_path(df_saving_path)
         else:
