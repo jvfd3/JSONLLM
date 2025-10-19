@@ -8,20 +8,21 @@ import datasets as ds
 def get_dataset(selected_df: str) -> ds.dataset_dict.DatasetDict:
     """ selected_df options: 'ae-110k', 'oa-mine', 'mave' """
 
-    def get_file_name(segment: str) -> str:
-        """ Returns the file name for the given segment ('train' or 'test') """
-        file_name = f'data/{segment}-00000-of-00001.parquet'
-        return file_name
-
-    def get_url(dataset: str, segment: str) -> str:
-        """ Constructs the URL for the given dataset and segment ('train' or 'test') """
-        base_url = f'hf://datasets/av-generation/{dataset}-dataset/'
-        file_name = get_file_name(segment)
-        url = base_url + file_name
-        return url
-
     def load_parquet(dataset: str, segment: str) -> pd.DataFrame:
         """ Loads the parquet file from the given dataset and segment ('train' or 'test') """
+
+        def get_file_name(segment: str) -> str:
+            """ Returns the file name for the given segment ('train' or 'test') """
+            file_name = f'data/{segment}-00000-of-00001.parquet'
+            return file_name
+
+        def get_url(dataset: str, segment: str) -> str:
+            """ Constructs the URL for the given dataset and segment ('train' or 'test') """
+            base_url = f'hf://datasets/av-generation/{dataset}-dataset/'
+            file_name = get_file_name(segment)
+            url = base_url + file_name
+            return url
+
         url = get_url(dataset, segment)
         loaded_df = pd.read_parquet(url)
         return loaded_df
