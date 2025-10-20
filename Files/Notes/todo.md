@@ -71,8 +71,10 @@
 
 ### 💠
 
-- [ ] Baixar o dataset AE-110K e entender como ele conecta no BiLSTM-CRF.
-- [ ] Aplicar os métodos de avaliação (Precisão, Recall, F1) no pipeline atual.
+- [ ] Baixar o dataset AE-110K e entender como ele conecta no BiLSTM-CRF
+- [ ] liquid.ai lfm2-extract (Upperbound)
+- [ ] Lang Extract: framework do Google (Comercial)
+- [ ] Aplicar os métodos de avaliação (Precisão, Recall, F1) no pipeline atual
 - [ ] Fazer o nosso (conversar depois)
 
 ### 🍯
