@@ -1,0 +1,61 @@
+{"id": 0, "text": "48V Ebike battery 750W 48V 12AH Lithium Battery 48V 13S Electric Bike battery 48V 12AH with PVC case 20A BMS 54.6V 2A charger", "json_answer": "{'voltage': '48V', 'power': '750W', 'capacity': '12AH', 'BMS': '20A'}"}
+{"id": 1, "text": "GLANE Brief New Kids Baby Girls Bikini Suit for Girl Navy Swimsuit Swimwear Bathing Swimming Clothes Two piece suit Beach Summer", "json_answer": "{'gender': 'feminino', 'type': 'bikini', 'color': 'navy'}"}
+{"id": 2, "text": "CUPSHE Floral Print Bikini Set Women Heart Neck Mid Waist Two Pieces Swimwear 2018 Girl Cute Beach Bathing Suit Swimsuits", "json_answer": "{'style': 'Floral Print', 'waist': 'Mid Waist', 'season': 'Summer'}"}
+{"id": 5, "text": "Women Ballroom Latin Modern Dance Shoes for Kids Low-heeled 3.5/4.5cm Girls Bronze Nude Waltz Tango Party Dance Shoes T30960", "json_answer": "{'gender': 'women', 'color': 'nude'}"}
+{"id": 6, "text": "Kioninai 2017 Summer Panda Mesh Cap Sun Hat Shade Baseball Cap Women Snapback Caps Gorras Hombre Bone Masculino Casquette", "json_answer": "{'season': 'Summer', 'material': 'Mesh', 'color': 'Panda', 'type': 'Baseball Cap', 'gender': 'Women, Men'}"}
+{"id": 7, "text": "Gradient Color Bikini Women Push Up Swimsuit Backless Biquini Ladies Bandage Swimwear Brazilian Biquinis Swimming Suit for Women", "json_answer": "{'style': 'Push Up', 'type': 'Bikini', 'color': 'gradient'}"}
+{"id": 8, "text": "Free shipping!Eyoyo 2&quot; LCD BD318 HD 720P 12X32 Zoom Digital Binoculars Telescope Video Camera Outdoor Telescope Hunting Camera", "json_answer": "{'features': ['LCD', 'HD', '720P', '12X32 Zoom', 'Digital', 'Outdoor', 'Telescope', 'Hunting Camera'], 'size': '2&quot;'}"}
+{"id": 9, "text": "Black 48cm Faux Leather Horse Whip Riding Crop Party Flogger Queen Whip for Horse Racing Riding Entertainment Horse Whip", "json_answer": "{'color': 'black', 'length': '48cm', 'material': 'faux leather'}"}
+{"id": 10, "text": "Winter Ski Sets Jackets Women Ski Jackets + Pants Snowboard Ski Suit Jacket Waterproof Breathable Wind Women China Shop Online", "json_answer": "{'gender': 'women', 'material': 'waterproof'}"}
+{"id": 11, "text": "2018 2019 adult West Ham United jersey ARNAUTOVIC 18 19 Western adult shirt T-shirt LANZINI CARROLL NOBLE CHICHARITO shirt", "json_answer": "{}"}
+{"id": 12, "text": "ballet professional satin pointe ribbon ties shoes white / black /Dance Shoes", "json_answer": "{'color': 'white / black', 'material': 'satin'}"}
+{'voltage': '48V', 'power': '750W', 'capacity': '12AH', 'BMS': '20A'}
+{'gender': 'Girl', 'type': 'Bikini Suit', 'color': 'Navy'}
+{'style': 'floral print', 'waist': 'mid waist', 'season': 'summer'}
+{'material': 'Flocking', 'features': '['Portable', 'Folding', 'Inflatable', 'Double Sided', 'Comfortable']'}
+{'model': 'Air Force 1 Low'}
+{'gender': 'feminino', 'style': 'Modern Dance', 'color': 'nude', 'model': 'T30960'}
+{'season': 'verão', 'material': 'mesh', 'color': 'branco'}
+{'style': 'Push Up', 'type': 'Bikini', 'color': 'gradient'}
+{'features': '['LCD', 'HD', '720P', '12X32', 'Zoom', 'Digital', 'Binoculars', 'Telescope', 'Video Camera', 'Outdoor Telescope', 'Hunting Camera']'}
+{'color': 'black', 'length': '48cm', 'material': 'faux leather'}
+{'material': 'waterproof', 'features': '['windproof', 'breathable']'}
+{}
+{'color': 'white / black', 'material': 'satin'}
+{'material': 'Leather', 'features': '['breathable', 'Anti-skid']'}
+{'material': 'wood', 'features': '['Adjustable Long Buckles', 'Pull Ups']'}
+{'material': '210T', 'type': 'pyramid tent'}
+{}
+{'material': 'plastic', 'color': 'black'}
+{'material': 'high elastic'}
+{'material': 'aluminum alloy', 'quantity': '10pcs'}
+{'quantity': '10pcs', 'color': 'green', 'type': 'Golf Ball Alignment Tool', 'material': 'plastic'}
+{'gender': 'men and women'}
+{}
+{'style': 'bikini', 'features': '['Print', 'Flounce', 'Push-Up', 'Padded']'}
+{'style': 'high waist', 'season': 'summer'}
+{'color': 'black', 'features': '['Floyd Rose', 'Rosewood fretboard']'}
+{'quantity': '1pc', 'material': 'silicone'}
+{'gender': 'women, men', 'style': 'burst lines'}
+{'material': 'Oxford'}
+{}
+{'material': 'rubber', 'type': 'paddle set', 'features': '['Double face', 'Ping-pong balls', 'Outdoor', 'Indoor', 'Portable', 'Durable', 'Wood']'}
+{'color': 'white', 'style': 'ruffed', 'type': 'Bandeau'}
+{'type': 'briefs'}
+{'color': 'transparent', 'shipping': 'free'}
+{'type': 'Turf', 'style': 'Lace Up', 'season': 'Summer', 'gender': 'Male'}
+{'type': 'ski goggles'}
+{'size': '17*13*4.5CM', 'material': 'wood + metal'}
+{'material': 'cotton-padded', 'features': '['Hooded', 'Sportswear']'}
+{'size': '4/4', 'material': 'acústico', 'type': 'violin'}
+{'style': 'Ballroom/Latin'}
+{}
+{'material': 'PU Leather', 'pattern': 'Heart'}
+{'quantity': '3Pcs/Lot', 'type': 'Water Bag Hose pipe clamp bracket fittings clips', 'use': 'outdoor backpack clip'}
+{'voltage': '36V', 'power': '280w'}
+{'material': 'carbon'}
+{'material': 'anti-fog'}
+{'material': 'Camuflagem', 'features': '['Compression', 'Breathable', 'Quick Dry']'}
+{'capacity': '2L', 'material': 'TPU', 'color': '4'}
+{'gender': 'men/women'}
+{}
