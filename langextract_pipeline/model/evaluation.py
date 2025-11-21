@@ -30,8 +30,8 @@ def evaluate_solution(model_solutions: Dict, reference_solutions: Dict) -> Dict:
     def count_cases(model_solutions: Dict, reference_solutions: Dict) -> Dict:
         """ Counts the different cases between model and reference solutions """
         counts = {'NN': 0, 'NV': 0, 'VN': 0, 'VC': 0, 'VW': 0}
-        model_keys = set(model_solutions.keys())
-        reference_keys = set(reference_solutions.keys())
+        model_keys = set(k.lower() for k in model_solutions.keys())
+        reference_keys = set(k.lower() for k in reference_solutions.keys())
         all_keys = model_keys.union(reference_keys)
 
         for key in all_keys:
