@@ -34,7 +34,8 @@ def get_hyperparameters():
         },
         'model': {
             'liquid': {
-                'model_name': 'LiquidAI/LFM2-350M-Extract',
+                # 'model_name': 'LiquidAI/LFM2-350M-Extract',
+                'model_name': 'LiquidAI/LFM2-1.2B-Extract',
                 'max_new_tokens': 160,
                 'add_generation_prompt': True,
                 'tokenize': True,

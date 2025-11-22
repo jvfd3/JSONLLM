@@ -132,11 +132,11 @@ Below are examples of correct behavior:
 # The key words must start capitalized.
 # All values are flat strings, meaning: they don't have any inner lists nor sub-json objects.
 
+    examples = ''
     for idx, example in enumerate(HYPER['prompts']['examples']):
-        examples = ''
         input_text = example['input']
         output_text = example['output']
-        examples += f'\n## Example {idx}\n\ninput: `{input_text}`, output: `{output_text}`\n'
+        examples += f'\n## Example {idx+1}\n\nINPUT: `{input_text}`\nOUTPUT: `{output_text}`\n'
 
     system_prompt += examples
 
