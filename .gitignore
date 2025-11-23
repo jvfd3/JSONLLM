@@ -1,3 +1,11 @@
 /Files/Code/Modules/__pycache__
 /Files/Code/Datasets/mave
 /Files/Code/Datasets/oa-mine
+*.aux
+*.fdb_latexmk
+*.bbl
+*.blg
+*.fls
+*.out
+*.log
+*.gz
