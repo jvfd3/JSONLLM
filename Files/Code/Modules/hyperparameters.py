@@ -9,6 +9,12 @@ def get_hyperparameters():
         'evaluation': {},
         'load_db': {
             'verbose': True,
+            'proportions': {
+                'train': 0.8,
+                'validation': 0.1,
+                'test': 0.1
+            },
+            'seed': 42  # Used for reproducibility when shuffling data
         },
         'prompts': {
             'system': {
