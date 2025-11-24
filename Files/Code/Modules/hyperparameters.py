@@ -22,6 +22,12 @@ def get_hyperparameters():
                 'json': """Present as a valid JSON object.""",
                 'capitalization': """The key words must start capitalized.""",
                 'structure': """All values are flat strings, meaning: they don't have any inner lists nor sub-json objects.""",
+                'mave_task': """
+                Extract structured product information from the text.
+                Identify product name, brand, model, category, color, size, material, and any key attributes.
+                Use the exact text for extractions — do not paraphrase.
+                Return relevant attributes that describe each product clearly.
+                """
             },
             'examples': [
                 {
@@ -48,6 +54,15 @@ def get_hyperparameters():
                 'return_dict': True,
                 'return_tensors': 'pt',
             }
+        },
+        'mave': {
+            'verbose': True,
+            'starting_point': 0,  # Set to 0 to process all entries
+            'workers': 10,  # Number of threads for parallel processing
+            'output_path': './Outputs/mave_extractions.jsonl',
+            'model_id': 'gemma2:2b',
+            'model_url': 'http://localhost:11434',
+
         }
     }
     return hyperparams
