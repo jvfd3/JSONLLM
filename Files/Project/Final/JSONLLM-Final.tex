@@ -6,14 +6,12 @@
 
 \maketitle
 
-% background, methodology, results, discussion, and conclusions
-
 % - Evaluation:
-% - Originality and Innovation
-% - Technical Proficiency
-% - Depth of Analysis/Implementation
-% - Clarity and Organization
-% - Impact and Significance
+%   - Originality and Innovation
+%   - Technical Proficiency
+%   - Depth of Analysis/Implementation
+%   - Clarity and Organization
+%   - Impact and Significance
 
 % - Dizer qual foi a contribuição de cada aluno no projeto
 
@@ -23,18 +21,20 @@
 
 \begin{abstract} % 150-250 words; problem, solution, objectives, expected outcomes.
   % Problem
-  Muitos produtos de \textit{e-commerce} possuem múltiplos atributos -- como tamanho, cor e material -- que são essenciais para auxiliar os clientes em tomadas de decisões de compra informadas. No entanto, a extração e a organização dessas informações a partir de descrições textuais de produtos não estruturadas é uma tarefa desafiadora.
-  % Solution
-  Neste trabalho, propomos o JSONLLM, uma abordagem que explora o potencial dos grandes modelos de linguagem (LLMs) para identificar e estruturar atributos de produtos em formato JSON. Nosso método utiliza as capacidades avançadas de compreensão semântica dos LLMs para reconhecer e categorizar com precisão informações provenientes de descrições diversas e complexas.
+  Muitos produtos de \textit{e-commerce} possuem múltiplos atributos -- como tamanho, cor e material -- que são essenciais para auxiliar os clientes em tomadas de decisões de compra informadas. No entanto, a extração e a organização dessas informações a partir de descrições textuais de produtos não estruturadas é uma tarefa desafiadora. Métodos recentes utilizando Grandes Modelos de Linguagem (LLMs) têm demonstrado potencial para superar essas dificuldades, permitindo a extração precisa e estruturada de atributos em formatos como JSON. Para avaliar a qualidade dessas extrações, é crucial que existam \textit{benchmarks} robustos e de qualidade, ao menos tão boas quanto aos resultados das técnicas de \textit{prompt engineering} atualmente utilizadas.
+  % Solution % <> VERIFICAR </>
+  Neste trabalho, propomos o JSONLLM, um \textit{benchmark} que agrupa dados de três outros datasets (MAVE, AE110K e OA-Mine) em um novo conjunto de dados anotados com atributos de produtos em formato JSON. Cobrindo uma característica não abordada pelos anteriores: valores não textuais. O JSONLLM explora o potencial dos LLMs para identificar e estruturar atributos de produtos em formato JSON. Nosso método utiliza as capacidades avançadas de compreensão semântica dos LLMs para reconhecer e categorizar com precisão informações provenientes de descrições diversas e complexas.
   % Objectives
-  Os objetivos principais deste projeto incluem: integrar LLMs para a extração de atributos de produtos, garantindo a escalabilidade com sistemas reais de \textit{e-commerce}, padronizando e avaliando a precisão do modelo proposto em comparação a técnicas de \textit{prompt engineering}.
+  Os objetivos principais deste trabalho incluem: 1. Desenvolver um \textit{benchmark} abrangente e diversificado para a extração de atributos de produtos de \textit{e-commerce}; 2. Expandir o potencial avaliativo sobre os métodos de extração de atributos, não se limitante a valores textuais.
   % Expected outcomes
-  Espera-se que o sistema resultante melhore significativamente a precisão da extração de atributos de produtos, facilitando a criação de catálogos de produtos mais ricos e detalhados. Vale ressaltar que a estruturação em JSON facilita a integração com sistemas de \textit{e-commerce} existentes, melhorando a experiência do usuário final.
+  Através da criação do JSONLLM, pretendemos fornecer uma ferramenta valiosa para a comunidade de pesquisa, facilitando o desenvolvimento e a avaliação de técnicas avançadas de extração de atributos utilizando LLMs.
 \end{abstract}
 
 \section{Introdução} % Introduction and Motivation: Background, problem statement, significance, motivation.
 
-A extração e estruturação de atributos de produtos em \textit{e-commerce} representa um desafio crucial devido à diversidade e complexidade das descrições de produtos não estruturadas. Muitos produtos possuem múltiplos atributos essenciais, como tamanho, cor e material, que são fundamentais para decisões informadas de compra. Métodos tradicionais de extração de informações frequentemente enfrentam limitações em precisão e adaptabilidade a descrições variadas \citet{ExtractGPT2023}. Recentemente, o uso de Grandes Modelos de Linguagem (LLMs) tem demonstrado potencial significativo para superar esses desafios, permitindo uma extração mais precisa e estruturada em formatos como JSON, facilitando a integração com sistemas de \textit{e-commerce} existentes \citet{PAE2024}. Esta motivação conduz à proposta do sistema JSONLLM, que visa explorar as capacidades avançadas dos LLMs para melhorar a qualidade da extração e apresentação de atributos de produtos.
+A extração e estruturação de atributos de produtos em \textit{e-commerce} representa um desafio crucial devido à diversidade e complexidade das descrições de produtos não estruturadas. Muitos produtos possuem múltiplos atributos essenciais, como tamanho, cor e material, que são fundamentais para decisões de compra. Métodos tradicionais de extração de informações frequentemente enfrentam limitações em precisão e adaptabilidade a descrições variadas \citet{ExtractGPT2023}. Recentemente, o uso de Grandes Modelos de Linguagem (LLMs) tem demonstrado potencial significativo para superar esses desafios, permitindo uma extração mais precisa e estruturada em formatos como JSON, facilitando a integração com sistemas de \textit{e-commerce} existentes \citet{PAE2024}.
+
+O desenvolvimento de LLMs requere o processamento de enormes quantidades de dados durante o seu treinamento \citet{} <> Buscar Referência </>. Alguns modelos recentes, através de técnicas de \textit{fine tuning} resultaram em melhorias significativas na extração de atributos. E para tal tarefa, é necessário o uso de datasets anotados de alta qualidade para que o modelo aprenda a identificar e estruturar corretamente os atributos dos produtos \citet{} <> Buscar Referência </>. No entanto, muitos dos datasets existentes apresentam limitações, como incompletude nas anotações e falta de diversidade nos tipos de atributos representados. Além disso, a maioria dos datasets foca exclusivamente em valores textuais \citet{MAVE2024}, negligenciando atributos que podem ser numéricos ou categóricos, o que restringe a aplicabilidade dos modelos treinados em dados reais.
 
 \section{Objetivos} % Project Objectives: SMART objectives (clear, specific, measurable, achievable, relevant, and time-bound).
 
@@ -48,7 +48,7 @@ Os principais objetivos deste projeto são:
   \item Garantir a escalabilidade e aplicabilidade do sistema em ambientes reais de \textit{e-commerce}, com potencial para integração fácil.
 \end{enumerate*}
 
-\section{Trabalhos Relacionados}
+\section{Trabalhos Relacionados} % Background
 
 \section{Metodologia} % Proposed Methodology: Data collection/preparation, model/architecture selection, implementation details, experimental design, evaluation plan.
 
@@ -71,11 +71,15 @@ O \textit{pipeline} incluirá a padronização dos atributos extraídos em JSON,
 
 \section{Liquid Nano Extract}
 
-\section{Resultados e Contribuições} % Expected Outcomes and Contributions: Anticipated results, contributions to LLM field, potential applications.
+\section{Resultados} % Expected Outcomes and Contributions: Anticipated results, contributions to LLM field, potential applications.
 
 Espera-se que o sistema JSONLLM melhore significativamente a precisão da extração de atributos de produtos, permitindo a geração de catálogos detalhados e padronizados. Assim os catálogos poderão ser dispostos em interfaces agradáveis aos usuários para facilitar a avaliação de opções disponíveis.
 
 A contribuição do projeto inclui o desenvolvimento de um \textit{pipeline} LLM para extração de atributos, o avanço no uso de JSON como padrão para dados estruturados em contexto comercial e a validação empírica da superioridade do método em relação a abordagens tradicionais \citet{ExtractGPT2023}. Além disso, o projeto pode ser aplicado em múltiplos domínios de comércio eletrônico, bem como em outras bases de dados, potencializando a interoperabilidade entre sistemas diversos.
+
+\section{Discussão} % Discussion: Interpretation of results
+
+\section{Conclusão} % Conclusion: Summary of findings, implications, future work.
 
 % \newpage
 
