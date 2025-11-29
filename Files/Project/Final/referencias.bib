@@ -71,7 +71,7 @@
   year       = {2024}
 }
 
-@article{SelfRefinementLLM2024,
+@article{SelfRefinementLLM2025,
   author    = {Brinkmann, Alexander and Bizer, Christian},
   copyright = {arXiv.org perpetual, non-exclusive license},
   doi       = {10.48550/ARXIV.2501.01237},
@@ -109,4 +109,34 @@
   url       = {https://arxiv.org/abs/2311.07861},
   urldate   = {2025-10-02},
   year      = {2023}
+}
+
+@inproceedings{AttriSAGE2024,
+  title     = {AttriSage: Product Attribute Value Extraction Using Graph Neural Networks},
+  author    = {Potta, Rohan AND Asthana, Mallika AND Yadav, Siddhant AND Goyal, Nidhi AND Patnaik, Sai AND Jain, Parul},
+  editor    = {Falk, Neele AND Papi, Sara AND Zhang, Mike},
+  booktitle = {Proceedings of the 18th Conference of the European Chapter of the Association for Computational Linguistics: Student Research Workshop},
+  month     = mar,
+  year      = {2024},
+  address   = {St. Julian{'}s, Malta},
+  publisher = {Association for Computational Linguistics},
+  url       = {https://aclanthology.org/2024.eacl-srw.8/},
+  doi       = {10.18653/v1/2024.eacl-srw.8},
+  pages     = {89--94},
+  abstract  = {Extracting the attribute value of a product from the given product description is essential for ecommerce functions like product recommendations, search, and information retrieval. Therefore, understanding products in E-commerce. Greater accuracy certainly gives any retailer the edge. The burdensome aspect of this problem lies in the diversity of the products and their attributes and values. Existing solutions typically employ large language models or sequence-tagging approaches to capture the context of a given product description and extract attribute values. However, they do so with limited accuracy, which serves as the underlying motivation to explore a more comprehensive solution. Through this paper, we present a novel approach for attribute value extraction from product description leveraging graphs and graph neural networks. Our proposed method demonstrates improvements in attribute value extraction accuracy compared to the baseline sequence tagging approaches.}
+}
+
+@inproceedings{AliExpress2025,
+  title     = {Scaling up Open Tagging from Tens to Thousands: Comprehension Empowered Attribute Value Extraction from Product Title},
+  author    = {Xu, Huimin and Wang, Wenting and Mao, Xin and Jiang, Xinyu and Lan, Man},
+  editor    = {Korhonen, Anna AND Traum, David AND M{\`a}rquez, Llu{\'i}s},
+  booktitle = {Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics},
+  month     = jul,
+  year      = {2019},
+  address   = {Florence, Italy},
+  publisher = {Association for Computational Linguistics},
+  url       = {https://aclanthology.org/P19-1514/},
+  doi       = {10.18653/v1/P19-1514},
+  pages     = {5214--5223},
+  abstract  = {Supplementing product information by extracting attribute values from title is a crucial task in e-Commerce domain. Previous studies treat each attribute only as an entity type and build one set of NER tags (e.g., BIO) for each of them, leading to a scalability issue which unfits to the large sized attribute system in real world e-Commerce. In this work, we propose a novel approach to support value extraction scaling up to thousands of attributes without losing performance: (1) We propose to regard attribute as a query and adopt only one global set of BIO tags for any attributes to reduce the burden of attribute tag or model explosion; (2) We explicitly model the semantic representations for attribute and title, and develop an attention mechanism to capture the interactive semantic relations in-between to enforce our framework to be attribute comprehensive. We conduct extensive experiments in real-life datasets. The results show that our model not only outperforms existing state-of-the-art NER tagging models, but also is robust and generates promising results for up to 8,906 attributes.}
 }
