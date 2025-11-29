@@ -1,5 +1,3 @@
-% !TeX root = JSONLLM.tex
-
 \documentclass{article}
 
 % \usepackage{neurips_2024} % ready for submission
@@ -21,27 +19,29 @@
 
 % === FIM DAS ANOTAÇÕES ADVINDAS DO MODELO NEURIPS_2024 === %
 
-\usepackage[utf8]{inputenc} % allow utf-8 input
-\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
-\usepackage{hyperref}       % hyperlinks
-\usepackage{url}            % simple URL typesetting
-\usepackage{booktabs}       % professional-quality tables
-\usepackage{amsfonts}       % blackboard math symbols
-\usepackage{nicefrac}       % compact symbols for 1/2, etc.
-\usepackage{microtype}      % microtypography
-\usepackage{xcolor}         % colors
-\usepackage{comment}        % enables the comment environment
-\usepackage[inline]{enumitem} % inline enumeration
+\usepackage[brazil]{babel}      % Syllabification and hyphenation for Brazilian Portuguese
+\usepackage[inline]{enumitem}   % inline enumeration
+\usepackage[T1]{fontenc}        % use 8-bit T1 fonts
+\usepackage[utf8]{inputenc}     % allow utf-8 input
+\usepackage{amsfonts}           % blackboard math symbols
+\usepackage{booktabs}           % professional-quality tables
+\usepackage{comment}            % enables the comment environment
+\usepackage{hyperref}           % hyperlinks
+\usepackage{microtype}          % microtypography
+\usepackage{multicol}           % multiple columns
+\usepackage{nicefrac}           % compact symbols for 1/2, etc.
+\usepackage{url}                % simple URL typesetting
+\usepackage{xcolor}             % colors
 
-\title{Project Proposal\\JSONLLM: Extração Escalável de Atributos de Produtos com Grandes Modelos de Linguagem (LLMs)}
+\title{Project Report\\JSONLLM: Extração Escalável de Atributos de Produtos com Grandes Modelos de Linguagem (LLMs)}
 
 \author{
-    João Vítor Fernandes Dias % \thanks{ORCID: \href{https://orcid.org/0000-0002-8156-9551}{0000-0002-8156-9551}}
+    João Vítor Fernandes Dias
+    % \thanks{ORCID: \href{https://orcid.org/0000-0002-8156-9551}{0000-0002-8156-9551}}
     \thanks{
-        \textbf{Contribuição:} idealização do projeto, modularização, pesquisa bibliográfica, testes com Liquid Nano Extract, documentação;
-        \textbf{ORCID:} \href{https://orcid.org/0000-0002-8156-9551}{0000-0002-8156-9551};
-        \textbf{GitHub:} \href{https://github.com/jvfd3}{jvfd3};
-        \textbf{LinkedIn:} \href{https://www.linkedin.com/in/jvfd3}{jvfd3}
+        ORCID: \href{https://orcid.org/0000-0002-8156-9551}{0000-0002-8156-9551};
+        GitHub: \href{https://github.com/jvfd3}{jvfd3};
+        LinkedIn: \href{https://www.linkedin.com/in/jvfd3}{jvfd3}
     } \\
     Computer Science Postgraduate Program\\
     2024711370\\
@@ -56,12 +56,6 @@
     Federal University of Minas Gerais\\
     Belo Horizonte, MG; 31270-901 \\
     \texttt{melissadmattos366@gmail.com} \\
-    \thanks{
-        \textbf{Contribuição:} testes com LangExtract [<>ADICIONAR MAIS DETALHES DA CONTRIBUIÇÃO];
-        \textbf{ORCID:} \href{https://orcid.org/0000-0002-9733-1867}{0000-0002-9733-1867};
-        \textbf{GitHub:} \href{https://github.com/melissamattos}{melissamattos};
-        \textbf{LinkedIn:} \href{https://www.linkedin.com/in/melissamattos/}{melissamattos}
-    }
 }
 
 \begin{comment}

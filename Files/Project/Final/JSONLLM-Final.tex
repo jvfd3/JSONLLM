@@ -23,63 +23,154 @@
   % Problem
   Muitos produtos de \textit{e-commerce} possuem múltiplos atributos -- como tamanho, cor e material -- que são essenciais para auxiliar os clientes em tomadas de decisões de compra informadas. No entanto, a extração e a organização dessas informações a partir de descrições textuais de produtos não estruturadas é uma tarefa desafiadora. Métodos recentes utilizando Grandes Modelos de Linguagem (LLMs) têm demonstrado potencial para superar essas dificuldades, permitindo a extração precisa e estruturada de atributos em formatos como JSON. Para avaliar a qualidade dessas extrações, é crucial que existam \textit{benchmarks} robustos e de qualidade, ao menos tão boas quanto aos resultados das técnicas de \textit{prompt engineering} atualmente utilizadas.
   % Solution % <> VERIFICAR </>
-  Neste trabalho, propomos o JSONLLM, um \textit{benchmark} que agrupa dados de três outros datasets (MAVE, AE110K e OA-Mine) em um novo conjunto de dados anotados com atributos de produtos em formato JSON. Cobrindo uma característica não abordada pelos anteriores: valores não textuais. O JSONLLM explora o potencial dos LLMs para identificar e estruturar atributos de produtos em formato JSON. Nosso método utiliza as capacidades avançadas de compreensão semântica dos LLMs para reconhecer e categorizar com precisão informações provenientes de descrições diversas e complexas.
+  Neste trabalho, propomos o JSONLLM, um \textit{benchmark} que agrupa dados de três outros datasets (MAVE, AE110K e OA-Mine) em um novo conjunto de dados anotados com atributos de produtos em formato JSON, cobrindo uma característica não abordada pelos anteriores: valores não textuais. O JSONLLM explora o potencial dos LLMs para identificar e estruturar atributos de produtos em formato JSON. Nosso método utiliza as capacidades de compreensão semântica dos LLMs para reconhecer e categorizar com precisão informações provenientes de descrições diversas.
   % Objectives
-  Os objetivos principais deste trabalho incluem: 1. Desenvolver um \textit{benchmark} abrangente e diversificado para a extração de atributos de produtos de \textit{e-commerce}; 2. Expandir o potencial avaliativo sobre os métodos de extração de atributos, não se limitante a valores textuais.
+  Os objetivos principais deste trabalho incluem: 1. Desenvolver um \textit{benchmark} abrangente e diversificado para a extração de atributos de produtos de \textit{e-commerce}; 2. Expandir o potencial avaliativo sobre os métodos de extração de atributos, não limitante a valores textuais.
   % Expected outcomes
   Através da criação do JSONLLM, pretendemos fornecer uma ferramenta valiosa para a comunidade de pesquisa, facilitando o desenvolvimento e a avaliação de técnicas avançadas de extração de atributos utilizando LLMs.
 \end{abstract}
 
 \section{Introdução} % Introduction and Motivation: Background, problem statement, significance, motivation.
 
-A extração e estruturação de atributos de produtos em \textit{e-commerce} representa um desafio crucial devido à diversidade e complexidade das descrições de produtos não estruturadas. Muitos produtos possuem múltiplos atributos essenciais, como tamanho, cor e material, que são fundamentais para decisões de compra. Métodos tradicionais de extração de informações frequentemente enfrentam limitações em precisão e adaptabilidade a descrições variadas \citet{ExtractGPT2023}. Recentemente, o uso de Grandes Modelos de Linguagem (LLMs) tem demonstrado potencial significativo para superar esses desafios, permitindo uma extração mais precisa e estruturada em formatos como JSON, facilitando a integração com sistemas de \textit{e-commerce} existentes \citet{PAE2024}.
+A extração e estruturação de atributos de produtos em \textit{e-commerce} representa um desafio crucial devido à diversidade e à complexidade das descrições não estruturadas de produtos. Muitos produtos possuem múltiplos atributos essenciais - como tamanho, cor e material - que são fundamentais para decisões de compra. Métodos tradicionais de extração de informações frequentemente enfrentam limitações em precisão e adaptabilidade a descrições variadas \citet{ExtractGPT2023}. Recentemente, o uso de Grandes Modelos de Linguagem (LLMs) tem demonstrado potencial significativo para superar esses desafios, permitindo uma extração mais precisa e estruturada em formatos como JSON, facilitando a integração com sistemas de \textit{e-commerce} existentes \citet{PAE2024}.
 
-O desenvolvimento de LLMs requere o processamento de enormes quantidades de dados durante o seu treinamento \citet{} <> Buscar Referência </>. Alguns modelos recentes, através de técnicas de \textit{fine tuning} resultaram em melhorias significativas na extração de atributos. E para tal tarefa, é necessário o uso de datasets anotados de alta qualidade para que o modelo aprenda a identificar e estruturar corretamente os atributos dos produtos \citet{} <> Buscar Referência </>. No entanto, muitos dos datasets existentes apresentam limitações, como incompletude nas anotações e falta de diversidade nos tipos de atributos representados. Além disso, a maioria dos datasets foca exclusivamente em valores textuais \citet{MAVE2024}, negligenciando atributos que podem ser numéricos ou categóricos, o que restringe a aplicabilidade dos modelos treinados em dados reais.
+O desenvolvimento de LLMs requer o processamento de enormes quantidades de dados durante o seu treinamento \citet{ExtractGPT2023}. Alguns modelos recentes, através de técnicas de \textit{fine tuning} resultaram em melhorias significativas na extração de atributos. E para tal tarefa, é necessário o uso de datasets anotados de alta qualidade para que o modelo aprenda a identificar e estruturar corretamente os atributos dos produtos \citet{MAVE2024}. No entanto, muitos dos datasets existentes apresentam limitações, como incompletude nas anotações e falta de diversidade nos tipos de atributos representados. Além disso, a maioria dos datasets foca exclusivamente em valores textuais \citet{MAVE2024}, negligenciando atributos que podem ser numéricos ou categóricos, o que restringe a aplicabilidade dos modelos treinados em dados reais. Em vista disso, os datasets públicos usados como referência, embora comuns na literatura, não representam bem a complexidade e a variação presentes nas descrições reais de produtos. Essa distância cria um problema metodológico: acabamos avaliando modelos avançados com bases que não capturam toda a riqueza e diversidade do domínio, o que pode levar a conclusões imprecisas sobre a verdadeira capacidade desses modelos.
 
 \section{Objetivos} % Project Objectives: SMART objectives (clear, specific, measurable, achievable, relevant, and time-bound).
 
 % (1) desenvolver um pipeline que integra LLMs para a extração de atributos de produtos; (2) definir um esquema padronizado para a representação dos atributos extraídos; (3) avaliar a precisão e eficiência do modelo proposto em comparação a técnicas de \textit{prompt engineering}; e (4)
 
-Os principais objetivos deste projeto são:
+Os principais objetivos deste trabalho são:
 \begin{enumerate*}
-  \item Desenvolver um pipeline que integre LLMs para a extração automática e precisa de atributos de produtos a partir de descrições não estruturadas;
-  \item Criar um esquema padronizado em formato JSON para representar os atributos extraídos de forma clara e interoperável;
-  \item Avaliar a precisão e eficiência do modelo proposto em comparação com métodos tradicionais de extração, mediante experimentos controlados;
-  \item Garantir a escalabilidade e aplicabilidade do sistema em ambientes reais de \textit{e-commerce}, com potencial para integração fácil.
+  \item Desenvolver um novo \textit{benchmark} para avaliação de técnicas de extração de atributos de produtos em \textit{e-commerce};
+  \item Disponibilizar um \textit{framework} de avaliação para metrificar o desempenho de LLMs na extração de atributos em formato JSON;
+  \item Apresentar um novo \textit{dataset} anotado com atributos de produtos em formato JSON, abrangendo valores não puramente textuais;
+  \item Comparar o novo dataset com outros existentes, destacando suas vantagens e limitações.
 \end{enumerate*}
-
-\section{Trabalhos Relacionados} % Background
 
 \section{Metodologia} % Proposed Methodology: Data collection/preparation, model/architecture selection, implementation details, experimental design, evaluation plan.
 
 \urldef\maveurl\url{https://github.com/google-research-datasets/MAVE}
-\urldef\trecurl\url{https://huggingface.co/datasets/trec-product-search/product-recommendation-2025}
 
-A metodologia envolve a coleta e preparação de um conjunto de dados representativo de descrições de produtos do \textit{e-commerce}, apoiada por bases públicas como o dataset MAVE (\textit{Multi-source Attribute Value Extraction}), que possui milhões de anotações de pares atributo-valor \citet{MAVE2024}\footnote{\maveurl}. Após o treino com as bases de dados anotadas o modelo será aplicado no \textit{dataset} da \textit{Track Product Search} da TREC (\textit{Text REtrieval Conference})\footnote{\trecurl} \citet{TRECProductSearch_2023} para avaliação empírica do método de enriquecimento dos dados.
 
-Será adotada uma arquitetura baseada em LLMs, com experimentações utilizando modelos \textit{open-source}, explorando técnicas de \textit{few-shot} e \textit{zero-shot learning} para extração estruturada. Em etapa posterior, através do \textit{finetuning} um modelo pré-treinado será aprimorado através dos exemplos anotados e sua performance será avaliada.
-
-O \textit{pipeline} incluirá a padronização dos atributos extraídos em JSON, com validações automatizadas e refinamento iterativo via técnicas de autoaperfeiçoamento (\textit{self-refinement}) para aumentar a precisão \citet{SelfRefinementLLM2024}. O desempenho do sistema será avaliado por métricas de precisão, \textit{recall} e f1-\textit{score}, comparado a abordagens baseadas em aprendizado de máquina tradicional e ferramentas existentes.
+A metodologia envolve a coleta e preparação de conjuntos de dados de descrições de produtos do \textit{e-commerce}, das seguintes bases públicas:
+\textbf{AE-110K} (\textit{Attribute Extraction 110K}), com dimensões $(39.489 \times 11)$ \cite{ExtractGPT2023, SelfRefinementLLM2025, AliExpress2025, AttriSAGE2024};
+\textbf{OA-Mine} (\textit{Open Attribute Mine}), com dimensões $(1.938 \times 9)$ \cite{ExtractGPT2023, SelfRefinementLLM2025};
+\textbf{MAVE} (\textit{Multi-source Attribute Value Extraction}), com dimensões $(2.073.115 \times 10)$ \cite{MAVE2024}.
 
 \subsection{\textit{Datasets}}
 
+De cada um destes \textit{datasets} as duplicatas foram removidas, ordenados por descrição e removidas as colunas; Posteriormente, foram repartidos em modelos de treino, validação e teste, na proporção de 80\%, 10\% e 10\%, respectivamente. A Tabela \ref{tab:dataset_comparison} apresenta uma comparação entre os \textit{datasets} utilizados e o JSONLLM, destacando as colunas presentes em cada um deles.
+
+\begin{table}[htbp]\centering
+  \caption{Comparação entre os atributos presentes nos \textit{datasets}} \label{tab:dataset_comparison}
+  \begin{tabular}{lcccc}
+    \toprule
+    \textbf{Coluna}                & \textbf{AE110K} & \textbf{MAVE} & \textbf{OA-Mine} & \textbf{JSONLLM} \\
+    \midrule
+    \textit{asin}                  &                 &               & $\times$         & $\times$         \\
+    \textit{source}                &                 & $\times$      &                  & $\times$         \\
+    \textit{category}              &                 & $\times$      & $\times$         & $\times$         \\
+    \textit{attributes}            & $\times$        & $\times$      & $\times$         & $\times$         \\
+    \textit{attributes\_values}    & $\times$        & $\times$      & $\times$         & $\times$         \\
+    \textit{json\_answer}          & $\times$        & $\times$      & $\times$         & $\times$         \\
+    \textit{text}                  & $\times$        & $\times$      & $\times$         & $\times$         \\
+    \textit{values}                & $\times$        & $\times$      & $\times$         & $\times$         \\
+    \textit{values\_indices}       & $\times$        & $\times$      & $\times$         & $\times$         \\
+    \textit{values\_text}          & $\times$        & $\times$      & $\times$         & $\times$         \\
+    \textit{id}                    & $\times$        & $\times$      &                  & $\times$         \\
+    \textit{candidate\_attributes} & $\times$        &               &                  & $\times$         \\
+    \textit{candidate\_example}    & $\times$        &               &                  & $\times$         \\
+    \textit{candidate\_text}       & $\times$        &               &                  & $\times$         \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+À seguir descrevemos as colunas da Tabela \ref{tab:dataset_comparison}:
+
+\begin{multicols}{2}
+  \begin{itemize}
+    \item \textbf{asin:} identificador único do produto;
+    \item \textbf{source:} fonte do dado;
+    \item \textbf{category:} categoria do produto;
+    \item \textbf{attributes:} lista de atributos do produto;
+    \item \textbf{attributes\_values:} lista de valores dos atributos do produto;
+    \item \textbf{json\_answer:} atributos e valores em formato JSON;
+    \item \textbf{text:} descrição textual do produto;
+    \item \textbf{values:} lista de valores extraídos do texto;
+    \item \textbf{values\_indices:} índices dos caracteres dos valores extraídos do texto;
+    \item \textbf{values\_text:} valores extraídos em formato textual;
+    \item \textbf{id:} identificador único do exemplo;
+    \item \textbf{candidate\_attributes:} lista de atributos candidatos para extração;
+    \item \textbf{candidate\_example:} exemplo de atributo candidato;
+    \item \textbf{candidate\_text:} texto do exemplo de atributo candidato.
+  \end{itemize}
+\end{multicols}
+
 \subsection{Modelos}
+
+Inicialmente usamos os modelos \textbf{LiquidAI/LFM2-350M-Extract} e \textbf{LiquidAI/LFM2-1.2B-Extract} para realizar a extração dos atributos. O que resultou em geração de JSON inválido e alucinações recorrentes. Como recursos de correção, foi testado o uso de \textit{role prompting} e \textit{few-shot learning}, mas sem sucesso. Frequentemente o modelo retornava chaves sequenciais (ex: ``atributo\_1'', ``atributo\_2'', \dots) até que seu limite de tokens fosse atingido. Aumentar a quantidade de tokens apenas aumentou a duração da alucinação, não sendo possível obter saídas válidas. Outro método foi utilizar bibliotecas de \textit{parsing} e correção de JSON, apesar de suceder em alguns casos, a taxa de sucesso era baixa e fugia do escopo esperado do projeto que visa utilizar LLMs para a extração direta de atributos em formato JSON.
+
+Outro modelo utilizado foi o \textbf{Gemma-2-2B} da Google com o auxílio da biblioteca \textbf{LangExtract}. Aplicamos as técnicas de \textit{role-prompting}, \textit{few-shot learning} e \textit{Chain-of-Thought}, em todas elas com resultados satisfatórios na extração de atributos em formato JSON válido.
 
 \subsection{Avaliação}
 
-\section{LangExtract}
+Foram utilizadas seguintes métricas propostas \cite{ExtractGPT2023, PAE2024, MAVE2024} para avaliar a performance dos modelos na extração de atributos em formato JSON:
+
+\begin{itemize}
+  \item \textbf{NN:} sem valor predito, sem valor verdadeiro -- Verdadeiro Negativo (VN);
+  \item \textbf{NV:} com Valor predito, sem valor verdadeiro -- Falso Positivo (FP);
+  \item \textbf{VN:} sem valor predito, com valor verdadeiro -- Falso Negativo (FN);
+  \item \textbf{VC:} valor predito corresponde ao valor verdadeiro -- Verdadeiro Positivo (VP);
+  \item \textbf{VW:} valor predito não corresponde ao valor verdadeiro;
+
+        % \item \textbf{NN:} No predicted value, No groud truth value -- True Negative (TN);
+        % \item \textbf{NV:} Predicted value, No ground truth value -- False Positive (FP);
+        % \item \textbf{VN:} No predicted value, ground truth value -- False Negative (FN);
+        % \item \textbf{VC:} predicted value matches ground truth value -- True Positive (TP);
+        % \item \textbf{VW:} predicted value does not match ground truth value;
+\end{itemize}
+
+A partir disso, definimos as métricas de precisão (\textit{precision}), revocação (\textit{recall}) e F1-\textit{score}.
+
+%\begin{itemize}
+%	\item \textbf{Precision:} $P = VC/(NV + VC + VW)$
+%	\item \textbf{Recall:} $R = VC/(VN + VC + VW)
+%	\item \textbf{F1-score:} $F1 = (2PR)/(P + R)$
+%\end{itemize}
+
+\subsubsection{Similaridade Semântica}
+
+Além das métricas tradicionais de precisão, revocação e F1-\textit{score}, também propomos a utilização de métricas de similaridade semântica para avaliar a qualidade das extrações de atributos em formato JSON. Essas métricas consideram o significado dos valores preditos, permitindo uma avaliação mais robusta em casos onde os valores podem ser expressos de maneiras diferentes, mas possuem o mesmo significado.
+
+Para calcular a similaridade semântica, utilizamos o modelo \textit{encoder-only} \textbf{MXBAI }\textbf{(mixedbread-ai/mxbai-embed-large-v1)} para gerar os \textit{embeddings} dos valores preditos e dos valores verdadeiros. Os vetores por token são agregados por \textit{mean pooling}, isto é, pela média dos \textit{embeddings} ao longo da sequência, de modo a capturar predominantemente o conteúdo semântico do texto, independentemente de sua estrutura superficial. Em seguida, calculamos a similaridade do cosseno entre os \textit{embeddings} correspondentes.
+
 
 \section{Liquid Nano Extract}
 
+Inicialmente testamos o modelo \textbf{liquid-nano-Extract-750M} da \textit{Hugging Face} para a extração de atributos em formato JSON. Porém, não foi possível obter resultados satisfatórios, visto que o modelo não conseguiu gerar saídas válidas em JSON de forma consistente. Além disso, o modelo recorrentemente produzia alucinações sobre os dados gerados, o que comprometeu a confiabilidade das extrações. Devido a essas limitações, optamos por explorar alternativas mais robustas para a tarefa de extração de atributos.
+
+\section{Gemma-2-2B com LangExtract}
+
+A primeira etapa deste estudo consistiu em avaliar o comportamento do LangExtract no dataset AE110K \citet{ExtractGPT2023}, um \textit{benchmark} amplamente utilizado para extração de atributos de produtos. O objetivo era verificar se um modelo \textit{open-source} seria capaz de extrair atributos estruturados a partir de textos curtos com qualidade suficiente para gerar catálogos coerentes.
+
+Observou-se que o LangExtract apresentava desempenho superior ao esperado. O modelo identificou atributos explícitos e implícitos sem sinais de alucinação e, em diversos casos, recuperou mais informações úteis do que as anotadas no próprio dataset. Isso evidenciou uma limitação central do AE110K: embora popular, trata-se de um benchmark inconsistente e incompleto, com anotações superficiais e convenções terminológicas heterogêneas. O resultado é que qualquer avaliação baseada em comparação literal entre ground truth e predição penaliza injustamente o modelo, mesmo quando sua saída é mais fiel ao texto que o próprio rótulo de referência.
+
+Diante dessa limitação, tornou-se necessário um método capaz de medir a proximidade conceitual entre predições e rótulos, mesmo quando o dataset oferece apenas uma representação parcial da informação real. Para isso, adotou-se uma métrica de similaridade semântica baseada em embeddings, utilizando o modelo open-source MXBAI (mixedbread-ai/mxbai-embed-large-v1). Ao converter atributos para uma representação textual unificada e comparar os embeddings por similaridade de cosseno, torna-se possível capturar o alinhamento semântico entre as descrições, independentemente de variações lexicais ou estruturais. Nessa métrica, valores próximos de 1 indicam forte convergência conceitual, enquanto valores mais baixos refletem diferenças que, muitas vezes, decorrem de limitações do próprio dataset.
+
+A leitura desses resultados confirma que o LangExtract é altamente competente, enquanto o benchmark é insuficiente para avaliá-lo por métodos tradicionais. A abordagem semântica revelou-se, assim, uma alternativa mais justa e realista, permitindo mensurar a qualidade das extrações de um modelo open-source em cenários onde os datasets públicos são imperfeitos e sub-representam a complexidade real das descrições de produtos.
+
+
 \section{Resultados} % Expected Outcomes and Contributions: Anticipated results, contributions to LLM field, potential applications.
 
-Espera-se que o sistema JSONLLM melhore significativamente a precisão da extração de atributos de produtos, permitindo a geração de catálogos detalhados e padronizados. Assim os catálogos poderão ser dispostos em interfaces agradáveis aos usuários para facilitar a avaliação de opções disponíveis.
+Como resultados, apresentamos o \textit{evaluation suite} \textbf{JSONLLM} que agrega dados dos datasets AE110K, OA-Mine e MAVE em um novo conjunto de dados anotados com atributos de produtos. Em comparação aos outros datasets, o JSONLLM cobre uma característica não abordada pelos anteriores: valores em formato de lista.
 
-A contribuição do projeto inclui o desenvolvimento de um \textit{pipeline} LLM para extração de atributos, o avanço no uso de JSON como padrão para dados estruturados em contexto comercial e a validação empírica da superioridade do método em relação a abordagens tradicionais \citet{ExtractGPT2023}. Além disso, o projeto pode ser aplicado em múltiplos domínios de comércio eletrônico, bem como em outras bases de dados, potencializando a interoperabilidade entre sistemas diversos.
+O JSONLLM, com dimensões de ($90.000 \times 8$), com descrições textuais únicas de produtos e seus respectivos atributos dispostos em diversos segmentos pré-computados.
 
-\section{Discussão} % Discussion: Interpretation of results
 
 \section{Conclusão} % Conclusion: Summary of findings, implications, future work.
+
+Este trabalho apresentou o JSONLLM, um novo benchmark para extração de atributos de produtos em e-commerce, unificando e ampliando três datasets amplamente utilizados na área. Ao incluir valores não textuais e fornecer anotações padronizadas em formato JSON, o JSONLLM supre limitações estruturais presentes em bases anteriores e possibilita avaliações mais realistas do desempenho de LLMs. Os experimentos demonstram que abordagens baseadas em modelos abertos, quando combinadas com técnicas adequadas de prompting e avaliação semântica, podem alcançar resultados robustos e consistentes.
 
 % \newpage
 
@@ -88,10 +179,10 @@ A contribuição do projeto inclui o desenvolvimento de um \textit{pipeline} LLM
 \bibliographystyle{apalike}
 \bibliography{referencias}
 
-\appendix
+% \appendix
 
-\section{Desafios e Estratégias de Mitigação} % Potential Challenges and Mitigation Strategies: Potential challenges and mitigation strategies.
+% \section{Desafios e Estratégias de Mitigação} % Potential Challenges and Mitigation Strategies: Potential challenges and mitigation strategies.
 
-Entre os principais desafios destacam-se a variabilidade e ambiguidade nas descrições dos produtos que dificultam a extração consistente de atributos; a necessidade de adaptação do modelo a múltiplos domínios de produto; e a escalabilidade do \textit{pipeline} para grandes volumes de dados. Para mitigar esses desafios, serão aplicadas estratégias de refinamento iterativo para corrigir erros, adoção de esquemas JSON flexíveis e extensíveis, e uso de conjuntos de dados amplos e diversificados para o treinamento e validação \citet{SelfRefinementLLM2024}.
+% Entre os principais desafios destacam-se a variabilidade e ambiguidade nas descrições dos produtos que dificultam a extração consistente de atributos; a necessidade de adaptação do modelo a múltiplos domínios de produto; e a escalabilidade do \textit{pipeline} para grandes volumes de dados. Para mitigar esses desafios, serão aplicadas estratégias de refinamento iterativo para corrigir erros, adoção de esquemas JSON flexíveis e extensíveis, e uso de conjuntos de dados amplos e diversificados para o treinamento e validação \citet{SelfRefinementLLM2024}.
 
 \end{document}
