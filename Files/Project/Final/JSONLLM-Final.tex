@@ -143,8 +143,7 @@ A partir disso, definimos as métricas de precisão (\textit{precision}), revoca
 
 Além das métricas tradicionais de precisão, revocação e F1-\textit{score}, também propomos a utilização de métricas de similaridade semântica para avaliar a qualidade das extrações de atributos em formato JSON. Essas métricas consideram o significado dos valores preditos, permitindo uma avaliação mais robusta em casos onde os valores podem ser expressos de maneiras diferentes, mas possuem o mesmo significado.
 
-Para calcular a similaridade semântica, utilizamos o modelo \textit{encoder-only} \textbf{MXBAI }\textbf{(mixedbread-ai/mxbai-embed-large-v1)} para gerar os \textit{embeddings} dos valores preditos e dos valores verdadeiros. Os vetores por token são agregados por \textit{mean pooling}, isto é, pela média dos \textit{embeddings} ao longo da sequência, de modo a capturar predominantemente o conteúdo semântico do texto, independentemente de sua estrutura superficial. Em seguida, calculamos a similaridade do cosseno entre os \textit{embeddings} correspondentes.
-
+Para calcular a similaridade semântica, utilizamos o modelo \textit{encoder-only} \textbf{MXBAI} \textbf{(mixedbread-ai/mxbai-embed-large-v1)} para gerar os \textit{embeddings} dos valores preditos e dos valores verdadeiros. Os vetores por token são agregados por \textit{mean pooling}, isto é, pela média dos \textit{embeddings} ao longo da sequência, de modo a capturar predominantemente o conteúdo semântico do texto, independentemente de sua estrutura superficial. Em seguida, calculamos a similaridade do cosseno entre os \textit{embeddings} correspondentes.
 
 \section{Liquid Nano Extract}
 
@@ -159,7 +158,6 @@ Observou-se que o LangExtract apresentava desempenho superior ao esperado. O mod
 Diante dessa limitação, tornou-se necessário um método capaz de medir a proximidade conceitual entre predições e rótulos, mesmo quando o dataset oferece apenas uma representação parcial da informação real. Para isso, adotou-se uma métrica de similaridade semântica baseada em embeddings, utilizando o modelo open-source MXBAI (mixedbread-ai/mxbai-embed-large-v1). Ao converter atributos para uma representação textual unificada e comparar os embeddings por similaridade de cosseno, torna-se possível capturar o alinhamento semântico entre as descrições, independentemente de variações lexicais ou estruturais. Nessa métrica, valores próximos de 1 indicam forte convergência conceitual, enquanto valores mais baixos refletem diferenças que, muitas vezes, decorrem de limitações do próprio dataset.
 
 A leitura desses resultados confirma que o LangExtract é altamente competente, enquanto o benchmark é insuficiente para avaliá-lo por métodos tradicionais. A abordagem semântica revelou-se, assim, uma alternativa mais justa e realista, permitindo mensurar a qualidade das extrações de um modelo open-source em cenários onde os datasets públicos são imperfeitos e sub-representam a complexidade real das descrições de produtos.
-
 
 \section{Resultados} % Expected Outcomes and Contributions: Anticipated results, contributions to LLM field, potential applications.
 
