@@ -50,20 +50,20 @@
 
 | Atributo             | AE110K | MAVE | OA-Mine | JSONLLM |
 | -------------------- | :----: | :--: | :-----: | :-----: |
-| asin                 |        |      |    X    |    X    |
-| source               |        |  X   |         |    X    |
-| category             |        |  X   |    X    |    X    |
+| asin                 |        |      |    X    |         |
+| candidate_attributes |   X    |      |         |         |
+| candidate_example    |   X    |      |         |         |
+| candidate_text       |   X    |      |         |         |
+| source               |        |  X   |         |         |
+| category             |        |  X   |    X    |         |
 | values_indices       |   X    |  X   |    X    |         |
-| attributes_values    |   X    |  X   |    X    |    X    |
+| id                   |   X    |  X   |         |    X    |
 | attributes           |   X    |  X   |    X    |    X    |
+| attributes_values    |   X    |  X   |    X    |    X    |
 | json_answer          |   X    |  X   |    X    |    X    |
 | text                 |   X    |  X   |    X    |    X    |
-| values_text          |   X    |  X   |    X    |    X    |
 | values               |   X    |  X   |    X    |    X    |
-| id                   |   X    |  X   |         |    X    |
-| candidate_attributes |   X    |      |         |    X    |
-| candidate_example    |   X    |      |         |    X    |
-| candidate_text       |   X    |      |         |    X    |
+| values_text          |   X    |  X   |    X    |    X    |
 
 | Característica     | AE110K |   MAVE    | OA-Mine | JSONLLM |
 | ------------------ | :----: | :-------: | :-----: | :-----: |
