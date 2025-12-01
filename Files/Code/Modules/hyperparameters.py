@@ -9,7 +9,7 @@ def get_hyperparameters() -> dict:
         'evaluation': {},
         'load_db': {
             'verbose': True,  # Whether to print detailed logs during data loading
-            'simple_columns': True,  # wheter to remove columns that aren't text and json_answer
+            'simple_columns': False,  # wheter to remove columns that aren't text and json_answer
             'proportions': {  # Proportions for splitting the dataset
                 'test': 0.1,
                 'validation': 0.1,
@@ -64,6 +64,13 @@ def get_hyperparameters() -> dict:
             'model_id': 'gemma2:2b',
             'model_url': 'http://localhost:11434',
 
+        },
+        'jsonllm': {
+            'starting_point': 0,
+            'workers': 10,
+            'output_path': './Generations/jsonllm/jsonllm_generations.jsonl',
+            'model_id': 'gemma2:2b',
+            'model_url': 'http://localhost:11434',
         }
     }
     return hyperparams
