@@ -1,12 +1,15 @@
-/Files/Code/Modules/__pycache__
-/Files/Code/Datasets/mave
-/Files/Code/Datasets/oa-mine
+# LaTeX auxiliary files
 *.aux
-*.fdb_latexmk
 *.bbl
 *.blg
+*.fdb_latexmk
 *.fls
-*.out
-*.log
 *.gz
-/Files/Code/Datasets/jsonllm
+*.log
+*.out
+# Datasets
+/Files/Code/Datasets/mave
+/Files/Code/Datasets/oa-mine
+# /Files/Code/Datasets/jsonllm
+# Python cache files
+/Files/Code/Modules/__pycache__
