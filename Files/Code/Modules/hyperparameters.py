@@ -23,7 +23,7 @@ def get_hyperparameters() -> dict:
                 'json': """Present as a valid JSON object.""",
                 'capitalization': """The key words must start capitalized.""",
                 'structure': """All values are flat strings, meaning: they don't have any inner lists nor sub-json objects.""",
-                'mave_task': """
+                'instruction': """
                 Extract structured product information from the text.
                 Identify product name, brand, model, category, color, size, material, and any key attributes.
                 Use the exact text for extractions — do not paraphrase.
