@@ -13,3 +13,7 @@
 # /Files/Code/Datasets/jsonllm
 # Python cache files
 /Files/Code/Modules/__pycache__
+Files/Code/Datasets/jsonllm/jsonllm.csv
+Files/Code/Datasets/jsonllm/jsonllm.jsonl
+Files/Code/Generations/jsonllm.jsonl
+Files/Code/Generations/jsonllm_cleaned.jsonl
