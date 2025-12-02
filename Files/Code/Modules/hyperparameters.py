@@ -43,6 +43,33 @@ def get_hyperparameters() -> dict:
                     'input': '''Outdoor Travel Cooker Stoves Ultra-Light Spirit Alcohol Stove Camping Cooking Furnace''',
                     'output': '''{"Type": "Alcohol Stove"}'''
                 }
+            ],
+            'examples_langextract': [
+                {
+                    'id': 1,
+                    'text': 'Camiseta PoloTech masculina de algodão, cor azul marinho, disponível nos tamanhos M, G e GG.',
+                    'class': 'product',
+                    'ext_text': 'Camiseta PoloTech masculina',
+                    'attributes': {
+                        'brand': 'PoloTech',
+                        'category': 'camiseta',
+                        'material': 'algodão',
+                        'color': 'azul marinho',
+                        'sizes': ['M', 'G', 'GG']
+                    }
+                },
+                {
+                    'id': 2,
+                    'text': 'Tênis esportivo Nike Air Zoom branco, ideal para corrida.',
+                    'class': 'product',
+                    'ext_text': 'Tênis esportivo Nike Air Zoom branco',
+                    'attributes': {
+                        'brand': 'Nike',
+                        'category': 'tênis esportivo',
+                        'color': 'branco',
+                        'intended_use': 'corrida'
+                    }
+                },
             ]
         },
         'model': {
@@ -66,9 +93,10 @@ def get_hyperparameters() -> dict:
 
         },
         'jsonllm': {
+            'verbose': True,
             'starting_point': 0,
             'workers': 10,
-            'output_path': './Generations/jsonllm/jsonllm_generations.jsonl',
+            'output_path': './Generations/jsonllm.jsonl',
             'model_id': 'gemma2:2b',
             'model_url': 'http://localhost:11434',
         }
