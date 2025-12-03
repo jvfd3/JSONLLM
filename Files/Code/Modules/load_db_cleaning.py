@@ -353,3 +353,31 @@ def debug_check_duplicated_ids(df: pd.DataFrame) -> None:  # Not used
         f"Number of duplicated 'id' entries: {duplicated_ids['id'].nunique()}")
     # print(duplicated_ids[['id', 'dataset', 'text']])
     # I don't know why there are so many duplicated ids
+
+
+def get_equal_sampled_datasets(JSONLLM: pd.DataFrame) -> pd.DataFrame:
+    """
+        # Get Unique values in 'dataset' column
+        # for each dataset, get number of rows
+        # Sample all datasets by the dataset with the smallest number of rows
+        # Join back all datasets
+    """
+    sampled_dfs = []
+
+    min_rows = JSONLLM['dataset'].value_counts().min()
+    for _, group in JSONLLM.groupby('dataset'):
+        sampled_group = group.sample(n=min_rows, random_state=HYPER['seed'])
+        sampled_dfs.append(sampled_group)
+    equal_sampled_JSONLLM = pd.concat(sampled_dfs)
+    equal_sampled_JSONLLM['id'] = equal_sampled_JSONLLM['id'].astype(str)
+
+    # Create new column "similarity_score" as type float and fill with NaN
+    equal_sampled_JSONLLM['similarity_score'] = pd.NA
+
+    # sort by index
+    equal_sampled_JSONLLM = equal_sampled_JSONLLM.sort_index()
+    # .reset_index(drop=True)
+
+    equal_sampled_JSONLLM.to_parquet(HYPER['balanced_output'], index=True)
+
+    return equal_sampled_JSONLLM
