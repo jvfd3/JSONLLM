@@ -14,7 +14,8 @@ def get_hyperparameters() -> dict:
                 'validation': 0.1,
                 'train': 0.8,
             },
-            'seed': 42  # Used for reproducibility when shuffling data
+            'seed': 42,  # Used for reproducibility when shuffling data
+            'balanced_output': 'Datasets/jsonllm/balanced_jsonllm.parquet'
         },
         'prompts': {
             'system': {  # System-level instructions for the model
