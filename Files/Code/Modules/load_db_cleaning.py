@@ -24,6 +24,24 @@ Functions:
     - get_all_dataset_columns
     - keep_larger_json_answer
 
+## To-Do
+
+- Reformat Column Types
+  - index: integer
+  - id: string
+  - dataset: categorical
+  - split: categorical
+  - text: string
+  - json_anser: json/string
+  - source: categorical
+  - category: categorical
+  - attributes: string
+  - attributes_values: string
+  - values: string
+  - values_indices: string
+  - candidate_example: string
+  - candidate_text: string
+
 ---
 
 
