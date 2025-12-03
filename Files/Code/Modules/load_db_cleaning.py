@@ -334,6 +334,9 @@ def join_datasets(datasets: dict) -> pd.DataFrame:
     # Sort by text and reindex
     joined_dfs = joined_dfs.sort_values('text').reset_index(drop=True)
 
+    # Convert the index to a column named 'unique_id'
+    joined_dfs.reset_index(inplace=True, names='unique_id')
+
     return joined_dfs
 
 
