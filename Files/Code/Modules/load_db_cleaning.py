@@ -1,14 +1,14 @@
 """
 Functions:
 1. get_specific_cols_to_remove: Returns the specific columns to remove for each dataset
-1. keep_larger_json_answer: Keeps only the rows with the larger json_answer for each text
-1. general_cleaning: General cleaning steps
-1. clean_dataset: Cleans the dataset by removing duplicates and NaN values
-1. split_df: Splits the dataframe into train, validation and test sets based on given proportions
-1. clean_dataframes: Cleans the dataframes according to the dataset
-1. join_datasets: Joins all datasets into a single DataFrame and adds a 'dataset' column
-1. clean_candidates: Cleans the candidates in the joined datasets by removing rows with null candidates
-1. debug_check_duplicated_ids: Check for duplicated 'id' values in the DataFrame
+2. keep_larger_json_answer: Keeps only the rows with the larger json_answer for each text
+3. general_cleaning: General cleaning steps
+4. clean_dataset: Cleans the dataset by removing duplicates and NaN values
+5. split_df: Splits the dataframe into train, validation and test sets based on given proportions
+6. clean_dataframes: Cleans the dataframes according to the dataset
+7. join_datasets: Joins all datasets into a single DataFrame and adds a 'dataset' column
+8. clean_candidates: Cleans the candidates in the joined datasets by removing rows with null candidates
+9. debug_check_duplicated_ids: Check for duplicated 'id' values in the DataFrame
 
 ## Sequence of operations:
 
