@@ -106,7 +106,7 @@ def get_specific_cols_to_remove(dataset_name: str) -> list:
 def general_cleaning(cleaning_dataset: pd.DataFrame) -> pd.DataFrame:
     """ General cleaning steps """
     if HYPER['verbose']:
-        print("General Clean: drop_na, keep bigger json_answer, re-index")
+        print("General Clean: Doing nothing for now")
 
     # Dropping NaN values
     # cleaning_dataset = cleaning_dataset.dropna()
@@ -118,7 +118,7 @@ def general_cleaning(cleaning_dataset: pd.DataFrame) -> pd.DataFrame:
     # cleaning_dataset = cleaning_dataset.sort_values('text')
 
     # Re-indexing
-    cleaning_dataset = cleaning_dataset.reset_index(drop=True)
+    # cleaning_dataset = cleaning_dataset.reset_index(drop=True)
 
     return cleaning_dataset
 
