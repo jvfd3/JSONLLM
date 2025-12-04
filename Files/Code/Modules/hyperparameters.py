@@ -105,7 +105,7 @@ def get_hyperparameters() -> dict:
             # Model for generating embeddings
             'embedder_model': 'mixedbread-ai/mxbai-embed-large-v1',
             # Whether to recompute embeddings even if they exist
-            'force_recompute_embeddings': True,
+            'force_recompute_embeddings': False,
         }
     }
     return hyperparams
