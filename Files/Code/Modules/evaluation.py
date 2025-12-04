@@ -27,6 +27,7 @@ def evaluate_solution(model_solutions: Dict, reference_solutions: Dict) -> Dict:
     - VC: (TP) True Positive
     - NV: (FP) False Positive
     - VN: (FN) False Negative
+    - NN: (TN) True Negative (not used in precision/recall/F1 calculations)
     ---
     Usually:
     Precision = TP / (TP + FP)
@@ -92,11 +93,11 @@ def evaluate_solution(model_solutions: Dict, reference_solutions: Dict) -> Dict:
     precision = get_precision(counts)
     recall = get_recall(counts)
     scores = {
-        'VN': counts['VN'],
-        'NV': counts['NV'],
-        'VC': counts['VC'],
-        'VW': counts['VW'],
-        'NN': counts['NN'],
+        'VN': int(counts['VN']),
+        'NV': int(counts['NV']),
+        'VC': int(counts['VC']),
+        'VW': int(counts['VW']),
+        'NN': int(counts['NN']),
         # 'accuracy': 0.0,
         'precision': precision,
         'recall': recall,
@@ -104,6 +105,38 @@ def evaluate_solution(model_solutions: Dict, reference_solutions: Dict) -> Dict:
     }
 
     return scores
+
+
+def evaluate_solution_df(df: pd.DataFrame) -> pd.DataFrame:
+    """ Evaluates the model solutions in a dataframe. """
+
+    df = df.copy()
+
+    # Temporarily convert JSON strings to dicts
+    df["gt_dict"] = df["gt_json_answer"].apply(json.loads)
+    df["lx_dict"] = df["lx_json_answer"].apply(json.loads)
+
+    # Evaluates each row
+    results = df.apply(
+        lambda row: evaluate_solution(row["gt_dict"], row["lx_dict"]),
+        axis=1
+    )
+
+    # Drop temporary dict columns
+    df = df.drop(columns=["gt_dict", "lx_dict"])
+
+    # Converts results to DataFrame
+    metrics_df = pd.DataFrame(results.tolist(), index=df.index)
+
+    # Ensure integer columns are of type int
+    int_columns = ['VN', 'NV', 'VC', 'VW', 'NN']
+    metrics_df[int_columns] = metrics_df[int_columns].astype(int)
+
+    # Concatenate original df with metrics_df
+    df = df.join(metrics_df)
+    # df = pd.concat([df, metrics_df], axis=1)
+
+    return df
 
 
 def get_distribution_metrics(sims: np.ndarray, title: str = '') -> dict[str, float]:
