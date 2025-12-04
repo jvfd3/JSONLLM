@@ -4,11 +4,11 @@ from tqdm import tqdm
 from ..hyperparameters import get_hyperparameters
 
 HYPER = get_hyperparameters()['evaluation']
-EMBEDDER = SentenceTransformer(HYPER['embedder_model'])
 
 
 def batch_embed(texts: list[str], batch_size: int = 32, desc: str = "Embeddings") -> np.ndarray:
     """ Generate embeddings for a list of texts in batches. """
+    EMBEDDER = SentenceTransformer(HYPER['embedder_model'])
 
     embs = []
     for i in tqdm(range(0, len(texts), batch_size), desc=desc):
