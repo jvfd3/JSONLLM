@@ -1,5 +1,6 @@
 
 import matplotlib.pyplot as plt
+import pandas as pd
 import numpy as np
 import os
 
@@ -20,24 +21,24 @@ def plot_and_save_hist(sims, title, out_path):
     plt.close()
 
 
-def plot_results(sims: dict[str, np.ndarray]) -> None:
+def plot_results(df: pd.DataFrame) -> None:
     """ Plot similarity results. """
 
     out_dir = "Charts"
     plot_and_save_hist(
-        sims['text_vs_gt'],
+        df['text_vs_gt_similarity_score'],
         title='Similarity: Text vs GT',
-        out_path=os.path.join(out_dir, "text_vs_gt")
+        out_path=os.path.join(out_dir, 'text_vs_gt')
     )
 
     plot_and_save_hist(
-        sims['text_vs_lx'],
+        df['text_vs_lx_similarity_score'],
         title='Similarity: Text vs LX',
-        out_path=os.path.join(out_dir, "text_vs_lx")
+        out_path=os.path.join(out_dir, 'text_vs_lx')
     )
 
     plot_and_save_hist(
-        sims['gt_vs_lx'],
+        df['gt_vs_lx_similarity_score'],
         title='Similarity: GT vs LX',
-        out_path=os.path.join(out_dir, "gt_vs_lx")
+        out_path=os.path.join(out_dir, 'gt_vs_lx')
     )
