@@ -17,3 +17,5 @@ Files/Code/Datasets/jsonllm/jsonllm.csv
 Files/Code/Datasets/jsonllm/jsonllm.jsonl
 Files/Code/Generations/jsonllm.jsonl
 Files/Code/Generations/jsonllm_cleaned.jsonl
+Files/Code/Generations/datasetless_jsonllm_cleaned.jsonl
+Files/Code/Generations/lx_datasetless_jsonllm.jsonl
