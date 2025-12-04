@@ -99,6 +99,13 @@ def get_hyperparameters() -> dict:
             'output_path': './Generations/jsonllm.jsonl',
             'model_id': 'gemma2:2b',
             'model_url': 'http://localhost:11434',
+        },
+        'evaluation': {
+            'debug': True,  # Whether to print debug information during evaluation
+            # Model for generating embeddings
+            'embedder_model': 'mixedbread-ai/mxbai-embed-large-v1',
+            # Whether to recompute embeddings even if they exist
+            'force_recompute_embeddings': False,
         }
     }
     return hyperparams

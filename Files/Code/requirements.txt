@@ -1,3 +1,7 @@
-pandas==2.3.2
-datasets==4.2.0
-ipywidgets==8.1.7
+datasets==4.2.0 # downloading HuggingFace datasets
+ipywidgets==8.1.7 # notebook interactivity
+pandas==2.3.2 # data manipulation
+sentence_transformers==5.1.2 # json_answer semantic similarity
+matplotlib==3.10.7 # data visualization in notebooks
+tqdm==4.67.1 # not sure
+numpy==2.3.4 # numerical operations

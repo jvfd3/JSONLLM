@@ -1,7 +1,10 @@
 """ Module for evaluating model solutions and plotting results. """
 
-import pandas as pd
+
 from typing import Dict
+import ast
+import json
+import pandas as pd
 
 
 def evaluate_solution(model_solutions: Dict, reference_solutions: Dict) -> Dict:
@@ -92,9 +95,32 @@ def evaluate_solution(model_solutions: Dict, reference_solutions: Dict) -> Dict:
     return scores
 
 
-def plot_results() -> None:
-    """ Plots the evaluation results """
-    pass
+def normalize_json(json_str: str) -> str:
+    def json_dump(obj: json.JSONEncoder) -> str:
+        # sort_keys=True
+        return json.dumps(obj, ensure_ascii=False)
+    if json_str is None:
+        return None
+
+    s = str(json_str).strip()
+
+    try:  # 1) proper JSON
+        return json_dump(json.loads(s))
+    except Exception:
+        pass
+
+    try:  # 2) python literal (single quotes, None, etc.)
+        return json_dump(ast.literal_eval(s))
+    except Exception:
+        pass
+
+    try:  # 3) small repairs: convert JSON null->None and try again
+        repaired = s.replace("null", "None")
+        return json_dump(ast.literal_eval(repaired))
+    except Exception:
+        pass
+
+    return s  # 4) last resort: return original (as safe string)
 
 
 def join_gt_and_our_dataframes(gt_df_path: str, our_df_path: str) -> pd.DataFrame:
@@ -153,5 +179,11 @@ def join_gt_and_our_dataframes(gt_df_path: str, our_df_path: str) -> pd.DataFram
 
     # Drop all rows where 'lx_json_answer' is NA
     merged_df = merged_df.dropna(subset=['lx_json_answer'])
+
+    # Normalize JSON answers for better comparison
+    merged_df['gt_json_answer'] = merged_df['gt_json_answer'].apply(
+        normalize_json)
+    merged_df['lx_json_answer'] = merged_df['lx_json_answer'].apply(
+        normalize_json)
 
     return merged_df

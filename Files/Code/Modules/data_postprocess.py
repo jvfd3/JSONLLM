@@ -1,6 +1,12 @@
 """
 Module for post-processing data files.
 Includes functions to convert JSON files to JSONL format and save them in multiple formats.
+
+## ToDo
+
+- [ ] Normalize JSON keys capitalization
+- [ ] Normalize JSON key ordering
+- [ ] Normalize JSON key spacing/underscores
 """
 
 
