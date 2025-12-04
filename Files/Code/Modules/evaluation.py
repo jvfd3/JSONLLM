@@ -1,5 +1,6 @@
 """ Module for evaluating model solutions and plotting results. """
 
+import pandas as pd
 from typing import Dict
 
 
@@ -94,3 +95,63 @@ def evaluate_solution(model_solutions: Dict, reference_solutions: Dict) -> Dict:
 def plot_results() -> None:
     """ Plots the evaluation results """
     pass
+
+
+def join_gt_and_our_dataframes(gt_df_path: str, our_df_path: str) -> pd.DataFrame:
+    """ Joins the ground truth dataframe with our dataframe on 'unique_id' column. """
+    gt_df = pd.read_parquet(gt_df_path)
+    our_df = pd.read_parquet(our_df_path)
+
+    # sort both dataframes by 'unique_id' to ensure alignment
+    gt_df = gt_df.sort_values(by='unique_id').reset_index(drop=True)
+    our_df = our_df.sort_values(by='unique_id').reset_index(drop=True)
+
+    # drop columns: ['candidate_example', 'candidate_text', 'values_indices', 'attributes', 'attributes_values', 'values']
+    cols_to_drop = [
+        'candidate_example',
+        'candidate_text',
+        'values_indices',
+        'attributes',
+        'attributes_values',
+        'values',
+        'id',
+        'category',
+        'source',
+        'split',
+    ]
+
+    gt_df = gt_df.drop(columns=cols_to_drop)
+    our_df = our_df.drop(columns=cols_to_drop)
+
+    # rename 'json_answer' in gt_df to 'gt_json_answer'; rename 'json_answer' in our_df to 'lx_json_answer'
+    gt_df = gt_df.rename(columns={'json_answer': 'gt_json_answer'})
+    our_df = our_df.rename(columns={'json_answer': 'lx_json_answer'})
+
+    # For each unique_id in gt_df, find the corresponding row in our_df and store the 'lx_json_answer' in a new column 'lx_json_answer' in gt_df
+    merged_df = pd.merge(
+        gt_df, our_df[['unique_id', 'lx_json_answer']], on='unique_id', how='left'
+    )
+
+    # Drop similarity_score column
+    merged_df = merged_df.drop(columns=['similarity_score'])
+
+    # Add columns: 'gt_similarity_score' and 'lx_similarity_score' with default value NA
+    merged_df['gt_similarity_score'] = pd.NA
+    merged_df['lx_similarity_score'] = pd.NA
+
+    # Sort merged_df columns by the following order
+    columns_order = [
+        'unique_id',
+        'dataset',
+        'text',
+        'gt_json_answer',
+        'lx_json_answer',
+        'gt_similarity_score',
+        'lx_similarity_score',
+    ]
+    merged_df = merged_df[columns_order]
+
+    # Drop all rows where 'lx_json_answer' is NA
+    merged_df = merged_df.dropna(subset=['lx_json_answer'])
+
+    return merged_df
